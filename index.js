@@ -249,7 +249,14 @@ function movieRatingsByName() {
 
 
 // 21. Return an object with Beyonce's hairstyles as the keys and a tally of each hairstyle, eg. `{ "blonde": 3, ... }`
-function hairStyleFrequency() {}
+function hairStyleFrequency() {
+  return uniqueHairstyles().reduce((obj, hair) => {
+    return {
+      ...obj,
+      [hair]: beyonceHash.hits.map(hit => hit.hair).flat().filter(hairstyle => hairstyle === hair).length,
+    }
+  }, {})
+}
 
 
 //Testing Zone
@@ -263,3 +270,4 @@ console.log(hitDancerSum());
 console.log(uniqueHairstyles());
 console.log(songFiercenessByName());
 console.log(movieRatingsByName());
+console.log(hairStyleFrequency());
