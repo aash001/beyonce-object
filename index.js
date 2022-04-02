@@ -253,7 +253,7 @@ function hairStyleFrequency() {
   return uniqueHairstyles().reduce((obj, hair) => {
     return {
       ...obj,
-      [hair]: beyonceHash.hits.map(hit => hit.hair).flat().filter(hairstyle => hairstyle === hair).length,
+      [hair]: beyonceHash.hits.flatMap(hit => hit.hair).filter(hairstyle => hairstyle === hair).length,
     }
   }, {})
 }
